@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ ##############################################################
+ # (C) 2015 BAE SYSTEMS
+ #
+ # ECOA PubSub (Publish-Subscribe) Sample - Types Library
+ #
+ # $Id: ECOA.File.types.xml,v 1.7 2016/01/26 10:55:17 ksappleb Exp $
+ #
+ # Part of the BAE Systems, Rochester, ECOA Samples collection
+ #
+ # Created by K S Appleby, BAE Systems, Airport Works, Rochester, Kent
+ #
+ # This software is developed for and on behalf of BAE SYSTEMS,
+ # Dassault Aviation, Bull SAS, Thales Systèmes Aéroportés,
+ # AgustaWestland Limited, GE Aviation Systems Limited,
+ # General Dynamics United Kingdom Limited and Selex ES Ltd.,
+ # and the copyright is owned by BAE SYSTEMS, Dassault Aviation,
+ # Bull SAS, Thales Systèmes Aéroportés, AgustaWestland Limited,
+ # GE Aviation Systems Limited, General Dynamics United Kingdom
+ # Limited and Selex ES Ltd.
+ #
+ # This software code was developed by BAE Systems (Operations)
+ # Limited, Electronic Systems and is the Foreground Intellectual
+ # Property of BAE Systems (Operations) Limited, Electronic Systems.
+ #
+ # The information set out in this document is provided solely
+ # on an ‘as is’ basis and the co-developers of this software make
+ # no warranties expressed or implied, including no warranties
+ # as to completeness, accuracy or fitness for purpose, with respect
+ # to any of the information.
+ ##############################################################
+-->
+<library xmlns:a="http://www.ecoa.technology/types-1.0">
+	<types>
+		<record name="Reference">
+			<field name="descriptor" type="int32"/>
+		</record>
+		
+		<fixedArray name="FileName" maxNumber="256" itemType="char8"/>
+		
+		<enum name="FileFlag" type="uint16">
+			<value name="READ"      valnum=    "0"/><!-- "0x0000" -->
+			<value name="WRITE"     valnum=    "1"/><!-- "0x0001" -->
+			<value name="READWRITE" valnum=    "2"/><!-- "0x0002" -->
+			<value name="APPEND"    valnum=    "8"/><!-- "0x0008" -->
+			<value name="NONBLOCK"  valnum=  "128"/><!-- "0x0080" -->
+			<value name="CREATE"    valnum=  "256"/><!-- "0x0100" -->
+			<value name="TRUNCATE"  valnum=  "512"/><!-- "0x0200" -->
+			<value name="EXCLUSIVE" valnum= "1024"/><!-- "0x0400" -->
+			<value name="NOCTTY"    valnum= "2048"/><!-- "0x0800" -->
+			<value name="PRIVATE"   valnum= "4096"/><!-- "0x1000" -->
+			<value name="LARGEFILE" valnum= "8192"/><!-- "0x2000" -->
+			<value name="BINARY"    valnum="16384"/><!-- "0x4000" -->
+		</enum>
+		
+		<enum name="SeekBase" type="uint8">
+			<value name="SEEK_SET"/>
+			<value name="SEEK_CUR"/>
+			<value name="SEEK_END"/>
+		</enum>
+		
+		<enum name="Permission" type="uint8">
+			<value name="READ"      valnum=    "4"/>
+			<value name="WRITE"     valnum=    "2"/>
+			<value name="EXECUTE"   valnum=    "1"/>
+			<value name="READEXEC"  valnum=    "5"/>
+			<value name="ALL"       valnum=    "7"/>
+		</enum>
+		
+		<record name="Permissions">
+			<field name="Owner" type="Permission"/>
+			<field name="Group" type="Permission"/>
+			<field name="Others" type="Permission"/>
+		</record>
+		
+		<record name="FileSpec">
+			<field name="FileName" type ="FileName"/>
+			<field name="Access" type="FileFlag"/>
+			<field name="CreatePermissions" type="Permissions"/>
+		</record>
+		
+	</types>
+</library>

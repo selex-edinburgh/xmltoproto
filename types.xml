@@ -1,0 +1,67 @@
+<!-- Records are handled okay
+TAKEN FROM: ECOA.File.types.xml -->
+<record name="Permissions">
+	<field name="Owner" type="Permission"/>
+	<field name="Group" type="Permission"/>
+	<field name="Others" type="Permission"/>
+</record>
+
+<!--  Records and fields with added comments  
+TAKEN FROM: example.types.xml  -->
+<record name="t2" comment="example">
+    <field type="t1" name="t21" comment="example"/>
+    <field type="tcolor" name="t22"/>
+</record>
+
+
+<!-- This type of enum works when the field type matches the enum name.
+We set the field type to the enum type. We then don't know it is an enum
+TAKEN FROM: ECOA.File.types.xml -->
+<enum name="Permission" type="uint8">
+	<value name="READ"      valnum=    "4"/>
+	<value name="WRITE"     valnum=    "2"/>
+	<value name="EXECUTE"   valnum=    "1"/>
+	<value name="READEXEC"  valnum=    "5"/>
+	<value name="ALL"       valnum=    "7"/>
+</enum>
+
+<!-- This type of enum wouldn't display because the enum name doesn't match and field types
+TAKEN FROM: pingpong.types.xml-->
+<enum name="T_Side" type="uint8">
+    <value name="PING"/>
+    <value name="PONG"/>
+</enum>
+
+<!-- enum with comments being added.    
+TAKEN FROM: example.types.xml -->
+<enum name="tcolor" type="int32" comment="example">
+    <value name="GREEN" valnum="1" comment="example"/>
+    <value name="BLUE" valnum="12"/>
+</enum>
+
+<!-- Not handled fixed arrays yet;
+TAKEN FROM: ECOA.File.types.xml -->
+<fixedArray name="FileName" maxNumber="256" itemType="char8"/>
+
+<!-- Not handled arrays yet;
+TAKEN FROM: logger.types.xml -->
+<array name="BLOB" maxNumber="100000" itemType="char8"/>
+
+<!--  array with   
+TAKEN FROM: example.types.xml  -->
+<array name="t3" maxNumber="1" itemType="t1" comment="example"/>
+
+<!-- Not handled simple types yet;
+In the example the name attribute matches a field type in a record. However in other examples they don't, similar to enums
+TAKEN FROM: pingpong.types.xml -->
+<simple name="T_Tactical_Item_ID" type="uint32"/>
+<simple name="T_Angle" type="float32" unit="radian"/>
+
+<!-- Another example of simple type however this one has extra attributes     
+TAKEN FROM: example.types.xml -->
+<simple type="double64" name="td1" comment="example simple type using min and max rang" minRange="-0.1" maxRange="1.e9"/>
+
+<!-- Not handled constant types yet;       
+TAKEN FROM: example.types.xml -->
+<constant name="Pi" type="double64" value="10.3E3"/>
+

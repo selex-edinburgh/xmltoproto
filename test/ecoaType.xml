@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<types>
+	<record name="RequestService">
+      <field name="description" type="string"/>
+      <field name="serviceName" type="string"/>
+	  
+	  <field name="parameterOneType" type="string"/>
+      <field name="parameterOneData" type="string"/>
+	  
+	  <field name="parameterTwoType" type="string"/>
+      <field name="parameterTwoData" type="string"/>
+    </record>
+
+</types>
