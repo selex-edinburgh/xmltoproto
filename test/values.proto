@@ -27,4 +27,19 @@ message uint16
 { 
 	required string value = 1; 
  } 
+ 
+message boolean8
+{ 
+	required string value = 1; 
+ } 
+
+message float32
+{ 
+	required string value = 1; 
+ }
+
+message double64
+{ 
+	required string value = 1; 
+ } 
   
