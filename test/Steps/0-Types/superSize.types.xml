@@ -1,0 +1,173 @@
+<!-- Combined all examples into one big xml to test different types -->
+<library xmlns="http://www.ecoa.technology/types-1.0">
+<types>
+<!-- ECOA.File.types.xml -->
+		<record name="Reference">
+			<field name="descriptor" type="int32"/>
+		</record>
+		
+		<fixedArray name="FileName" maxNumber="256" itemType="char8"/>
+		
+		<enum name="FileFlag" type="uint16">
+			<value name="READ"      valnum=    "0"/><!-- "0x0000" -->
+			<value name="WRITE"     valnum=    "1"/><!-- "0x0001" -->
+			<value name="READWRITE" valnum=    "2"/><!-- "0x0002" -->
+			<value name="APPEND"    valnum=    "8"/><!-- "0x0008" -->
+			<value name="NONBLOCK"  valnum=  "128"/><!-- "0x0080" -->
+			<value name="CREATE"    valnum=  "256"/><!-- "0x0100" -->
+			<value name="TRUNCATE"  valnum=  "512"/><!-- "0x0200" -->
+			<value name="EXCLUSIVE" valnum= "1024"/><!-- "0x0400" -->
+			<value name="NOCTTY"    valnum= "2048"/><!-- "0x0800" -->
+			<value name="PRIVATE"   valnum= "4096"/><!-- "0x1000" -->
+			<value name="LARGEFILE" valnum= "8192"/><!-- "0x2000" -->
+			<value name="BINARY"    valnum="16384"/><!-- "0x4000" -->
+		</enum>
+		
+		<enum name="SeekBase" type="uint8">
+			<value name="SEEK_SET"/>
+			<value name="SEEK_CUR"/>
+			<value name="SEEK_END"/>
+		</enum>
+		
+		<enum name="Permission" type="uint8">
+			<value name="READ"      valnum=    "4"/>
+			<value name="WRITE"     valnum=    "2"/>
+			<value name="EXECUTE"   valnum=    "1"/>
+			<value name="READEXEC"  valnum=    "5"/>
+			<value name="ALL"       valnum=    "7"/>
+		</enum>
+		
+		<record name="Permissions">
+			<field name="Owner" type="Permission"/>
+			<field name="Group" type="Permission"/>
+			<field name="Others" type="Permission"/>
+		</record>
+		
+		<record name="FileSpec">
+			<field name="FileName" type ="FileName"/>
+			<field name="Access" type="FileFlag"/>
+			<field name="CreatePermissions" type="Permissions"/>
+		</record>
+<!-- /ECOA.File.types.xml -->
+
+<!-- pingpong.types.xml -->
+    <enum name="T_Side" type="uint8">
+      <value name="PING"/>
+      <value name="PONG"/>
+    </enum>
+
+    <simple name="T_Tactical_Item_ID" type="uint32"/>
+    <simple name="T_Angle" type="float32" unit="radian"/>
+
+    <record name="T_2D_Position">
+      <field name="Latitude" type="T_Angle"/>
+      <field name="Longitude" type="T_Angle"/>
+    </record>
+    <simple name="T_Time" type="int64" unit="nanoseconds"/>
+
+    <record name="T_Target_Position">
+      <field name="Tactical_Item_ID" type="T_Tactical_Item_ID"/>
+      <field name="Location" type="T_2D_Position"/>
+      <field name="Is_Valid" type="boolean8"/>
+    </record>
+<!-- /pingpong.types.xml -->
+
+<!-- example.types.xml -->
+    <constant name="Pi" type="double64" value="10.3E3"/>
+    <constant name="minusPi" type="double64" value="-3.141592654"/>
+    <simple type="double64" name="td1" comment="example simple type using min and max rang" minRange="-0.1" maxRange="1.e9"/>
+    <simple type="double64" name="angle" comment="example simple type using constant" minRange="%minusPi%" maxRange="%Pi%"/>
+    <simple type="uint8" name="t1" comment="example simple type"/>
+    <enum name="tcolor" type="int32" comment="example">
+      <value name="GREEN" valnum="1" comment="example"/>
+      <value name="BLUE" valnum="12"/>
+    </enum>
+    <record name="t2" comment="example">
+      <field type="t1" name="t21" comment="example"/>
+      <field type="tcolor" name="t22"/>
+    </record>
+    <fixedArray name="t0" itemType="t1" maxNumber="10"/>
+    <array name="t3" maxNumber="1" itemType="t1" comment="example"/>
+<!-- /example.types.xml -->
+
+<!-- Fault_Management.types.xml -->
+
+<!-- Exception type reported through exception_notification -->
+    <enum name="exception_type" type="uint32">
+      <value name="RESOURCE_NOT_AVAILABLE" valnum="0"/>
+      <value name="UNAVAILABLE" valnum="1"/>
+      <value name="MEMORY_VIOLATION" valnum="2"/>
+      <value name="NUMERICAL_ERROR" valnum="3"/>
+      <value name="ILLEGAL_INSTRUCTION" valnum="4"/>
+      <value name="STACK_OVERFLOW" valnum="5"/>
+      <value name="DEADLINE_VIOLATION" valnum="6"/>
+      <value name="OVERFLOW" valnum="7"/>
+      <value name="UNDERFLOW" valnum="8"/>
+      <value name="ILLEGAL_INPUT_ARGS" valnum="9"/>
+      <value name="ILLEGAL_OUTPUT_ARGS" valnum="10"/>
+      <value name="ERROR" valnum="11"/> <!-- Only used when the SM raises an error -->
+      <value name="FATAL_ERROR" valnum="12"/> <!-- Only used when the SM raises a fatal error -->
+      <value name="HARDWARE_FAULT" valnum="13"/>
+      <value name="POWER_FAIL" valnum="14"/>
+      <value name="COMMUNICATION_ERROR" valnum="15"/>
+      <value name="INVALID_CONFIG" valnum="16"/>
+      <value name="INITIALISATION_PROBLEM" valnum="17"/>
+      <value name="CLOCK_UNSYNCHRONIZED" valnum="18"/>
+      <value name="UNKNOWN_SENT_OPERATION" valnum="19"/>
+      <value name="OPERATION_OVERRATED" valnum="20"/>
+      <value name="OPERATION_UNDERRATED" valnum="21"/>
+    </enum>
+
+    <simple name="asset_id" type="uint32"/>
+
+    <!-- Error data reported to the Supervision Module Error Handler -->
+    <enum name="asset_type" type="uint32">
+      <value name="COMPONENT" valnum="0"/>
+      <value name="PROTECTION_DOMAIN" valnum="1"/>
+      <value name="NODE" valnum="2"/>
+      <value name="PLATFORM" valnum="3"/>
+      <value name="SERVICE" valnum="4"/>
+      <value name="DEPLOYMENT" valnum="5"/>
+    </enum>
+
+    <!-- Exception data reported to the ECOA Exception Handler -->
+    <simple name="exception_id" type="uint32"/>
+
+    <!-- Recovery actions required through recovery_action API -->
+    <enum name="recovery_action_type" type="uint32">
+      <value name="SHUTDOWN_COMPONENT" valnum="0"/>
+      <value name="COLD_RESTART" valnum="1"/>
+      <value name="WARM_RESTART" valnum="2"/>
+      <value name="RELOAD_PLATFORM" valnum="3"/>
+    </enum>
+
+    <!-- Error data reported to the Supervision Module Error Handler -->
+    <enum name="module_error_type" type="uint32">
+      <value name="ERROR" valnum="0"/>
+      <value name="FATAL_ERROR" valnum="1"/>
+    </enum>
+<!-- /Fault_Management.types.xml -->
+
+<!-- test_names.types.xml -->
+    <simple name="T_Length" type="double64" minRange="%example:minPi%" maxRange="%example:Pi%"/>
+    <simple name="T_Length___" type="double64"/>
+    <simple name="T_Length12" type="double64"/>
+<!-- /Fault_Management.types.xml -->
+
+<!-- logger.types.xml -->
+		<array name="BLOB" maxNumber="100000" itemType="char8"/>
+		<record name="TimeStamp">
+			<field name="secs" type="int64"/>
+			<field name="nsecs" type="int64"/>
+		</record>
+		<record name="LogItem">
+			<field name="seq" type="int64"/>
+			<field name="timeStamp" type="TimeStamp"/>
+			<field name="data" type="BLOB"/>
+		</record>
+<!-- /logger.types.xml -->
+
+
+
+</types>
+</library>

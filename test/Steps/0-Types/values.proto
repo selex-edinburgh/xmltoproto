@@ -1,0 +1,70 @@
+syntax = "proto2"; 
+
+message ECOA__int16
+{ 
+	required int32 value = 1; 
+ } 
+ 
+message ECOA__int8
+{ 
+	required int32 value = 1; 
+ } 
+ 
+message ECOA__char8
+{ 
+	required string value = 1; 
+ } 
+ 
+message ECOA__uint8
+{ 
+	required uint32 value = 1; 
+ } 
+ 
+message ECOA__byte
+{ 
+	required bytes value = 1; 
+ } 
+ 
+message ECOA__uint16
+{ 
+	required uint32 value = 1; 
+ } 
+ 
+message ECOA__boolean8
+{ 
+	required string value = 1; 
+ } 
+
+message ECOA__float32
+{ 
+	required float value = 1; 
+ }
+
+message ECOA__double64
+{ 
+	required double value = 1; 
+ } 
+  
+message ECOA__int64
+{
+	required int64 value = 1;
+}
+
+message ECOA__int32
+{
+	required int32 value = 1;
+}
+
+message ECOA__uint32
+{
+	required uint32 value = 1;
+}
+message ECOA__uint64
+{
+	required uint64 value = 1;
+}
+
+message ECOA__string
+{ 
+	required string value = 1; 
+ } 

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ ##############################################################
+ # (C) 2015 BAE SYSTEMS
+ #
+ # ECOA Dining Philosophers Sample - Types Library
+ #
+ # $Id: philosopher.types.xml,v 1.4 2016/07/19 20:25:14 ksappleb Exp $
+ #
+ # Part of the BAE Systems, Rochester, ECOA Samples collection
+ #
+ # Created by K S Appleby, BAE Systems, Airport Works, Rochester, Kent
+ #
+ # This software is developed for and on behalf of BAE Systems (Operations)
+ # Limited, Dassault Aviation, Bull SAS, Thales Systèmes Aéroportés,
+ # AgustaWestland Limited, GE Aviation Systems Limited,
+ # General Dynamics United Kingdom Limited and Selex ES Ltd.,
+ # and the copyright is owned by BAE Systems (Operations) Limited,
+ # Dassault Aviation, Bull SAS, Thales Systèmes Aéroportés, AgustaWestland
+ # Limited, GE Aviation Systems Limited, General Dynamics United Kingdom
+ # Limited and Selex ES Ltd.
+ #
+ # This software is developed by BAE Systems (Operations)
+ # Limited, Electronic Systems, and is the Intellectual
+ # Property of BAE Systems (Operations) Limited, Electronic Systems.
+ #
+ # The information set out in this document is provided solely
+ # on an ‘as is’ basis and the co-developers of this software make
+ # no warranties expressed or implied, including no warranties
+ # as to completeness, accuracy or fitness for purpose, with respect
+ # to any of the information.
+ ##############################################################
+-->
+<library xmlns="http://www.ecoa.technology/types-1.0">
+	<types>
+		<!-- enums  -->
+		<enum name="State" type="uint8">
+			<value name="UNDEFINED" valnum="0"/>
+			<value name="GETTINGSTICKS" valnum="1"/>
+			<value name="EATING" valnum="2"/>
+			<value name="SURRENDERING" valnum="3"/>
+			<value name="THINKING" valnum="4"/>
+		</enum>
+		
+		<!-- records -->
+		
+		<!-- arrays  -->
+		
+	</types>
+</library>
